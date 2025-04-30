@@ -11,17 +11,19 @@
 </head>
 <body>
     <h1 class="text-center p-3">Gestor de Reservas</h1>
+    <button class="btn btn-dark btn-sm">Crear Nueva Reserva</button>
     <div class="d-flex justify-content-center gap-3 p-5 table-responsive">
       <table class="table table-hover table-striped table-bordered">
         <thead class="table-dark">
           <tr>
             <th scope="col">id cliente</th>
             <th scope="col">Nombre del cliente</th>
-            <th scope="col">codigo de de habitacion</th>
+            <th scope="col">Numero de habitacion</th>
             <th scope="col">Fecha de reserva</th>
             <th scope="col">Monto</th>
             <th scope="col">Fecha de ingreso</th>
             <th scope="col">fecha de salida</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -36,10 +38,59 @@
             <td>{{$item->F_ingreso}}</td>
             <td>{{$item->F_salida}}</td>
             <td>
-              <a href="" class="btn btn-dark btn-sm"><i class="fa-solid fa-user-pen" style="color:green;"></i></a>
-              <br>
+              <a href="" data-bs-toggle="modal" data-bs-target="#Modaledit" class="btn btn-dark btn-sm"><i class="fa-solid fa-user-pen" style="color:green;"></i></a>
+            </td>
+            <td>
               <a href="" class="btn btn-dark btn-sm"><i class="fa-regular fa-user-xmark" style="color: #ff0000;"></i></a>
             </td>
+<!-- Modal edit -->
+<div class="modal fade" id="Modaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar Reserva</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @csrf
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">CC cliente</label>
+            <input type="text" class="form-control" id="" name="id_cliente">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre del cliente</label>
+            <input type="text" class="form-control" id="" name="id_cliente">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Numero de Habitacion</label>
+            <input type="text" class="form-control" id="" name="N_habitacion">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de reserva</label>
+            <input type="date" class="form-control" id="" name="F_reserva">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Monto</label>
+            <input type="text" class="form-control" id="" name="pago">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de ingreso</label>
+            <input type="date" class="form-control" id="" name="F_ingreso">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">fecha de salida</label>
+            <input type="date" class="form-control" id="" name="F_salida">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-dark">Editar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
           </tr>
           @endforeach
         </tbody>

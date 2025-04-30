@@ -1,3 +1,9 @@
 .table-dark th{
     color: green !important;
 }
+.btn-dark{
+    color: green !important;   
+}
+.btn-danger{
+    color: black !important;
+}
