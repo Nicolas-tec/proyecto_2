@@ -20,3 +20,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::post("/crear-reserva", [Reservacontroller::class, "create"])->name("Reserva.create");

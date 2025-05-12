@@ -11,7 +11,55 @@
 </head>
 <body>
     <h1 class="text-center p-3">Gestor de Reservas</h1>
-    <button class="btn btn-dark btn-sm">Crear Nueva Reserva</button>
+    <!-- Modal create -->
+<div class="modal fade" id="Modalcrear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Reserva</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route("Reserva.create")}}" method="POST">
+          @csrf
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">CC cliente</label>
+            <input type="text" class="form-control" id="" name="id_cliente">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre del cliente</label>
+            <input type="text" class="form-control" id="" name="	Nombre_cliente">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Numero de Habitacion</label>
+            <input type="text" class="form-control" id="" name="N_habitacion">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de reserva</label>
+            <input type="date" class="form-control" id="" name="F_reserva">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Monto</label>
+            <input type="text" class="form-control" id="" name="pago">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de ingreso</label>
+            <input type="date" class="form-control" id="" name="F_ingreso">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">fecha de salida</label>
+            <input type="date" class="form-control" id="" name="F_salida">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-dark">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
+    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modalcrear">Crear Nueva Reserva</button>
     <div class="d-flex justify-content-center gap-3 p-5 table-responsive">
       <table class="table table-hover table-striped table-bordered">
         <thead class="table-dark">
