@@ -12,7 +12,8 @@ class Reservacontroller extends Controller
         return view("control")->with("datos",$datos);
     }
     public function create(Request $request){
-        $sql=DB::insert('insert into reserva (id_cliente,Nombre_cliente,N_habitacion,F_reserva,pago,F_ingreso,F_salida) values (?,?,?,?,?,?,?)', [
+        try {
+            $sql=DB::insert('insert into reserva (id_cliente,Nombre_cliente,N_habitacion,F_reserva,pago,F_ingreso,F_salida) values (?,?,?,?,?,?,?)', [
             $request->id_cliente,
             $request->Nombre_cliente,
             $request->N_habitacion,
@@ -21,10 +22,13 @@ class Reservacontroller extends Controller
             $request->F_ingreso,
             $request->F_salida
         ]);
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
         if ($sql == true) {
-            return back()->with("Reserva registarada");
+            return back()->with("correcto","Reserva registarada");
         } else {
-            # code...
+            return back()->with("error","ERROR");
         }
         
     }
